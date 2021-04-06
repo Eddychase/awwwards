@@ -54,6 +54,9 @@ class Profile(models.Model):
     def get_one_post(self, post_id):
         return self.objects.get(pk=post_id)
 
+    def __str__(self):
+        return self.name
+
 
 class Comment(models.Model):
     author = models.ForeignKey(User, related_name='comments', null=True)
@@ -96,5 +99,15 @@ class CommentsLikes(models.Model):
     user = models.ForeignKey(User, related_name='liked_by', null=True)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
     comment = models.ForeignKey(Comment, related_name='likes', null=True)
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, related_name='ratings', null=True)
+    post = models.ForeignKey(Post, related_name='ratings', null=True)
+    post_date = models.DateTimeField(auto_now_add=True, null=True)
+    usability = models.FloatField(default=0.00, null=True)
+    design = models.FloatField(default=0.00, null=True)
+    creativity = models.FloatField(default=0.00, null=True)
+    content = models.FloatField(default=0.00, null=True)
+    mobile = models.FloatField(default=0.00, null=True)
 
 
