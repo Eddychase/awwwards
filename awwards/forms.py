@@ -1,5 +1,4 @@
 from django import forms
-# fill in custom user info then save it
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
