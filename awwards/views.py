@@ -28,3 +28,7 @@ def login(request):
             messages.error(request, 'Error wrong username/password')
 
     return render(request, 'login.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('login')
