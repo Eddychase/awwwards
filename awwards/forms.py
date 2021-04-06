@@ -30,3 +30,33 @@ class ProfileForm(forms.ModelForm):
         exclude = ['user', 'is_judge', 'is_pro',
                    'is_chief', 'is_tribe', 'user_address']
         list_display = []
+
+class WebsitePostForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ('name', 'landing_image',
+                  'screenshot_1', 'screenshot_2', 'screenshot_3', 'screenshot_4', 'description', 'site_link', 'country')
+
+
+class LocationForm(forms.ModelForm):
+    class Meta:
+        model = Location
+        exclude = ['user', 'post', 'state', 'zipcode', 'address']
+
+
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Location
+        exclude = ['user', 'post']
+
+class RatePostForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        exclude = ['user', 'post']
+
+
+class ReviewCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ['author', 'post']
