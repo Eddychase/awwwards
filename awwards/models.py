@@ -38,6 +38,35 @@ class Profile(models.Model):
     twitter = models.CharField(max_length=200, null=True)
     instagram = models.CharField(max_length=200, null=True)
     linkedin = models.CharField(max_length=200, null=True)
+    STATUS_CHOICES = (
+        ('Male', ("Male")),
+        ('Female', ("Female")),
+        ('Other', ("Other")),
+    )
+    gender = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, blank=True)
+    age = models.IntegerField(blank=True, null=True)
+    phone = models.IntegerField(null=True)
+    email = models.CharField(max_length=50, null=True)
+    country = models.CharField(max_length=50, null=True)
+    state = models.CharField(max_length=50, null=True)
+    zipcode = models.IntegerField(null=True)
+    address = models.IntegerField(null=True)
+    is_judge = models.BooleanField(default=False)
+    is_pro = models.BooleanField(default=False)
+    is_chief = models.BooleanField(default=False)
+    is_tribe = models.BooleanField(default=False)
+
+    def save_profile(self, current_user):
+        self.is_chief = False
+        self.is_pro = False
+        self.is_judge = False
+        self.is_tribe = False
+        self.user = current_user
+        self.save()
+
+    def __str__(self):
+        return self.user_name
 
     @classmethod
     def all_posts(cls):
