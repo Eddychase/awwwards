@@ -36,3 +36,12 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments', null=True)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
     review = models.TextField(null=True, blank=True)
+
+class Location(models.Model):
+    country = models.CharField(max_length=50, null=True)
+    state = models.CharField(max_length=50, null=True)
+    zipcode = models.IntegerField(null=True)
+    address = models.IntegerField(null=True)
+
+    def __str__(self):
+        return self.country
