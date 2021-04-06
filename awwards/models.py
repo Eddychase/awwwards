@@ -235,6 +235,11 @@ class Rating(models.Model):
     def get_last_post(self):
         return Rating.objects.last()
 
+class Collection(models.Model):
+    user = models.ForeignKey(User, related_name='collections', null=True)
+    post_date = models.DateTimeField(auto_now_add=True, null=True)
+    post = models.ForeignKey(Post)
+
 class tags(models.Model):
     post = models.ForeignKey(Post, related_name='tags', null=True)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
