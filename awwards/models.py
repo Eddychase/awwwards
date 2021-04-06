@@ -235,6 +235,11 @@ class Rating(models.Model):
     def get_last_post(self):
         return Rating.objects.last()
 
+class tags(models.Model):
+    post = models.ForeignKey(Post, related_name='tags', null=True)
+    post_date = models.DateTimeField(auto_now_add=True, null=True)
+    tag = models.CharField(max_length=50, null=True)
+
 
 class Followers(models.Model):
     follower = models.ForeignKey(User, related_name='followers', null=True)
