@@ -6,6 +6,14 @@ class Post(models.Model):
     uploaded_by = models.ForeignKey(User, null=True, related_name='posts')
     country = models.CharField(max_length=50, null=True)
     name = models.CharField(max_length=200, null=True)
+    landing_image = models.ImageField(upload_to='site-images/', null=True)
+    screenshot_1 = models.ImageField(upload_to='site-images/', null=True)
+    screenshot_2 = models.ImageField(upload_to='site-images/', null=True)
+    screenshot_3 = models.ImageField(upload_to='site-images/', null=True)
+    screenshot_4 = models.ImageField(upload_to='site-images/', null=True)
+    description = models.TextField(blank=True)
+    site_link = models.CharField(max_length=200, null=True)
+    post_date = models.DateTimeField(auto_now_add=True)
 
     @classmethod
     def all_posts(cls):
