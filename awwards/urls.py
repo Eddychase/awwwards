@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^rate/post/(\d+)$', views.rate_website, name='rate_website'),
 ]
 
+# this will help to serve uploaded images on the development server
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
