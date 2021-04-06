@@ -4,7 +4,7 @@ import math
 
 # Create your models here.
 class Post(models.Model):
-    uploaded_by = models.ForeignKey(User, null=True, related_name='posts')
+    uploaded_by = models.ForeignKey(User, null=True, related_name='posts',on_delete=models.CASCADE)
     country = models.CharField(max_length=50, null=True)
     name = models.CharField(max_length=200, null=True)
     landing_image = models.ImageField(upload_to='site-images/', null=True)
@@ -25,7 +25,7 @@ class Post(models.Model):
         return self.name
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, null=True, related_name='profile')
+    user = models.OneToOneField(User, null=True, related_name='profile',on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, null=True)
     last_name = models.CharField(max_length=50, null=True)
     profile_photo = models.ImageField(upload_to='images/', blank=True,default='dwf_profile.jpg')
@@ -89,8 +89,8 @@ class Profile(models.Model):
 
 
 class Comment(models.Model):
-    author = models.ForeignKey(User, related_name='comments', null=True)
-    post = models.ForeignKey(Post, related_name='comments', null=True)
+    author = models.ForeignKey(User, related_name='comments', null=True,on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comments', null=True,on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
     review = models.TextField(null=True, blank=True)
 
@@ -104,8 +104,8 @@ class Location(models.Model):
         return self.country
 
 class Followers(models.Model):
-    follower = models.ForeignKey(User, related_name='followers', null=True)
-    following = models.ForeignKey(User, related_name='following', null=True)
+    follower = models.ForeignKey(User, related_name='followers', null=True,on_delete=models.CASCADE)
+    following = models.ForeignKey(User, related_name='following', null=True,on_delete=models.CASCADE)
     followed_on = models.DateTimeField(auto_now_add=True)
 
     def follow_user(self, current_user, user_other):
@@ -121,18 +121,18 @@ class Followers(models.Model):
         return f'{self.follower.username} is now following {self.following.username}'
 
 class PostLikes(models.Model):
-    user = models.ForeignKey(User, related_name='liked_posts', null=True)
+    user = models.ForeignKey(User, related_name='liked_posts', null=True,on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
-    post = models.ForeignKey(Post, related_name='likes', null=True)
+    post = models.ForeignKey(Post, related_name='likes', null=True,on_delete=models.CASCADE)
 
 class CommentsLikes(models.Model):
-    user = models.ForeignKey(User, related_name='liked_by', null=True)
+    user = models.ForeignKey(User, related_name='liked_by', null=True,on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
-    comment = models.ForeignKey(Comment, related_name='likes', null=True)
+    comment = models.ForeignKey(Comment, related_name='likes', null=True,on_delete=models.CASCADE)
 
 class Rating(models.Model):
-    user = models.ForeignKey(User, related_name='ratings', null=True)
-    post = models.ForeignKey(Post, related_name='ratings', null=True)
+    user = models.ForeignKey(User, related_name='ratings', null=True,on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='ratings', null=True,on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
     usability = models.FloatField(default=0.00, null=True)
     design = models.FloatField(default=0.00, null=True)
@@ -265,19 +265,19 @@ class Rating(models.Model):
         return Rating.objects.last()
 
 class Collection(models.Model):
-    user = models.ForeignKey(User, related_name='collections', null=True)
+    user = models.ForeignKey(User, related_name='collections', null=True,on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
 
 class tags(models.Model):
-    post = models.ForeignKey(Post, related_name='tags', null=True)
+    post = models.ForeignKey(Post, related_name='tags', null=True,on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True, null=True)
     tag = models.CharField(max_length=50, null=True)
 
 
 class Followers(models.Model):
-    follower = models.ForeignKey(User, related_name='followers', null=True)
-    following = models.ForeignKey(User, related_name='following', null=True)
+    follower = models.ForeignKey(User, related_name='followers', null=True,on_delete=models.CASCADE)
+    following = models.ForeignKey(User, related_name='following', null=True,on_delete=models.CASCADE)
     followed_on = models.DateTimeField(auto_now_add=True)
 
     def follow_user(self, current_user, user_other):
