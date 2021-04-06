@@ -38,6 +38,22 @@ class Profile(models.Model):
     instagram = models.CharField(max_length=200, null=True)
     linkedin = models.CharField(max_length=200, null=True)
 
+    @classmethod
+    def all_posts(cls):
+        all_posts = cls.objects.all()
+        return all_posts
+
+    @classmethod
+    def filter_by_search_term(cls, search_term):
+        return cls.objects.filter(description__icontains=search_term)
+
+    def get_user_profile(self, post):
+        posts = self.objects.filter(uploaded_by=post.uploaded_by)
+        return posts
+
+    def get_one_post(self, post_id):
+        return self.objects.get(pk=post_id)
+
 
 class Comment(models.Model):
     author = models.ForeignKey(User, related_name='comments', null=True)
