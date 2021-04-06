@@ -63,3 +63,9 @@ class Followers(models.Model):
     def __str__(self):
         return f'{self.follower.username} is now following {self.following.username}'
 
+class PostLikes(models.Model):
+    user = models.ForeignKey(User, related_name='liked_posts', null=True)
+    post_date = models.DateTimeField(auto_now_add=True, null=True)
+    post = models.ForeignKey(Post, related_name='likes', null=True)
+
+
