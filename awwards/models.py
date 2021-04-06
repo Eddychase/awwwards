@@ -29,3 +29,10 @@ class Profile(models.Model):
     twitter = models.CharField(max_length=200, null=True)
     instagram = models.CharField(max_length=200, null=True)
     linkedin = models.CharField(max_length=200, null=True)
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(User, related_name='comments', null=True)
+    post = models.ForeignKey(Post, related_name='comments', null=True)
+    post_date = models.DateTimeField(auto_now_add=True, null=True)
+    review = models.TextField(null=True, blank=True)
