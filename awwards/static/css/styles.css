@@ -5,6 +5,7 @@
 
 /* Root styling */
 :root {
+  --white: white;
   --dark-grey: #434343;
   --border-color: #e6eaea;
   --submit-button: #49c5b6;
@@ -62,7 +63,7 @@
 }
 
 .btn-outline-white-50 {
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: black !important;
   background-color: transparent;
   background-image: none;
   border-color: rgba(255, 255, 255, 0.136) !important;
@@ -193,27 +194,27 @@
 }
 
 .light-grey {
-  color: var(--light-grey);
+  color: var(--white);
 }
 
 .btn-blue {
   background-color: var(--submit-button);
 }
 
-.c-darkgrey {
-  background-color: var(--dark-grey);
+.c-white {
+  background-color: var(--white);
 }
 
 .bg-darkgrey {
-  background-color: #2e2e2e;
+  background-color: white;
 }
 
 .c-blue {
   color: var(--submit-button);
 }
 
-.txt-lightgrey {
-  color: var(--light-grey);
+.txt-white {
+  color: var(--white);
   font-size: 16px;
 }
 
@@ -233,7 +234,7 @@
 }
 
 .nav {
-  background-color: var(--dark-grey);
+  background-color: var(--white);
   height: 70px;
 }
 

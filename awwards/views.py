@@ -37,7 +37,7 @@ def search_results(request):
         return render(request, 'search.html', search_context)
 
 
-def home(request):
+def home(request,*args, **kwargs):
     post = Post.objects.first()
     post_reviews = post.ratings.all()
     posts = Post.objects.all()
@@ -110,13 +110,13 @@ def profile(request, user_id, username):
 
 def signup(request):
     if request.method == 'POST':
-        form = MyRegistrationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             print('here')
             form.save()
             return redirect('login')
 
-    form = MyRegistrationForm()
+    form = RegistrationForm()
 
     context = {
         'form': form
