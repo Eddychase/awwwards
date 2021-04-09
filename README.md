@@ -23,7 +23,7 @@ As a user of the application you will be able to:
 
 ## Live link
 
-> - You can [view](https://awwwardse.herokuapp.com/) the app
+> - You can [view](https://awwardse.herokuapp.com/) the app
 
 ## Getting Started
 
