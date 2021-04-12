@@ -72,7 +72,7 @@ class TestComment (TestCase):
 
         self.vikki = User(username='vikki', password='akisijui')
         self.vikki.save()
-        self.waterfall = Photo(uploaded_by=self.vikki, photo='test.jpg',
+        self.waterfall = Post(uploaded_by=self.vikki, photo='test.jpg',
                                caption='this is a test photo', post_date=datetime.utcnow())
         self.waterfall.save_photo(self.vikki)
         self.comment = Comment(comment='this is comment')
