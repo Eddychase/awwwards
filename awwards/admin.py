@@ -3,6 +3,8 @@ from .models import Profile,Post,Comment,Location,Followers,Rating
 
 
 
+
+
 # Register your models here.
 admin.site.register(Profile)
 admin.site.register(Post)
