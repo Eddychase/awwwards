@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'awards.wsgi.application'
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=False, )
 # development
 if config('MODE')=="dev":
    DATABASES = {
