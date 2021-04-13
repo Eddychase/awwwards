@@ -39,7 +39,7 @@ def search_results(request):
 
 def home(request,*args, **kwargs):
     post = Post.objects.first()
-    post_reviews = post.ratings.all()
+    post_reviews = Post.ratings.all()
     posts = Post.objects.all()
     judges = list(set([judge.user for judge in post_reviews]))
     print(posts)
