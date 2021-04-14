@@ -42,7 +42,7 @@ def home(request,*args, **kwargs):
     post_reviews=post.ratings.all()
     posts = Post.objects.all()
     judges = list(set([judge.user for judge in post_reviews]))
-    print(post)
+    print(post_reviews)
 
     average_usability = Rating.average_usability(post)
     average_design = Rating.average_design(post)
